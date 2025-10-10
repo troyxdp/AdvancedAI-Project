@@ -118,6 +118,8 @@ class VariationalAutoencoder():
         self._output = x
         return self._output
 
+    # Made with assistance from https://numbersmithy.com/2d-and-3d-convolutions-using-numpy/
+    # Some parts are adapted from my HYP
     def back_propogate(self, lr: float, error_prime: np.ndarray, epoch_num:int, beta_1=None, beta_2=None, kl_beta=1.0, l2_lambda=0, clip_value=0.8):
         # Get first delta value
         delta: np.ndarray = error_prime * self._layers[-1].apply_activation_fn_dx() # multiply gradient of cost function with derivative of activation function applied to z values
@@ -150,7 +152,7 @@ class VariationalAutoencoder():
             # Get s_l'(z_l) where s_l is activation function of layer l, the current layer
             act_fn_dx = curr_layer.apply_activation_fn_dx()
 
-            # Perform unique logic for each type of layer
+            # Perform unique logic for each type of layer and following layer
             if isinstance(curr_layer, FullyConnectedLayer):
                 # Can be followed by a transposed convolutional layer in the decoder or a split head fully connected layer in the encoder
                 if isinstance(next_layer, FullyConnectedLayer):
