@@ -13,8 +13,8 @@ if __name__ == '__main__':
     # Get args
     parser = argparse.ArgumentParser(description='Program to generate MNIST-like samples using a VAE')
     parser.add_argument('--vae', type=str, default='networks/best.pkl', help='Path to VAE pickle file')
-    parser.add_argument('--images', type=str, default='archive/train-images.idx3-ubyte')
-    parser.add_argument('--labels', type=str, default='archive/train-labels.idx1-ubyte')
+    parser.add_argument('--images', type=str, default='archive/t10k-images.idx3-ubyte')
+    parser.add_argument('--labels', type=str, default='archive/t10k-labels.idx1-ubyte')
     parser.add_argument('--samples', type=int, default=9, help='Number of samples to run through encoder to get mean and log variance averages')
     args = parser.parse_args()
 
