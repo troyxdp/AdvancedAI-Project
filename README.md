@@ -1,6 +1,11 @@
 # Advanced AI Project
 Welcome to my Advanced AI Project from my Honours year! The project was a Variational Autoencoder (VAE) that generated MNIST-like data. 
 
+To install all of the necessary libraries, run the following command:
+```
+pip install -r requirements.txt
+```
+
 To train a model, run the following command:
 ```
 python train.py
